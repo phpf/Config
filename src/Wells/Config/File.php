@@ -12,17 +12,11 @@ namespace Wells\Config;
  * @package Config
  * @subpackage File
  */
-abstract class File extends Base {
+abstract class File extends Object {
 	
 	protected $configFile;
 	
 	abstract public function parse();
-	
-	public function __construct( $file = null ){
-		
-		if ( !empty($file) )
-			$this->configFile = $file;
-	}
 	
 	public function setConfigFile( $file ){
 		$this->configFile = $file;

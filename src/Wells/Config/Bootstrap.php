@@ -3,8 +3,6 @@
  * @package Wells.Config
  */
 
-require __DIR__ . '/Base.php';
-
 /**
 * Returns instance of Config_Object
 */
