@@ -9,7 +9,6 @@ Components-Config
 ##Basic Usage
 
 First, set up the config with the dependency injection container:
-
 ```php
 $di->setSingleton('config', function (){
   return new Wells\Config\Object;
@@ -17,7 +16,6 @@ $di->setSingleton('config', function (){
 ```
 
 Then use like so:
-
 ```php
 $config = $di->singleton('config');
 
@@ -25,7 +23,6 @@ $config->set('dot.notation.rocks', true);
 ```
 
 The above will be stored in a nested array:
-
 ```php
 "dot" => array(
   "notation" => array(
