@@ -14,7 +14,6 @@ First, set up the config with the dependency injection container:
 $di->setSingleton('config', function (){
   return new Wells\Config\Object;
 });
-
 ```
 
 Then use like so:
