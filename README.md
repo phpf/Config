@@ -3,10 +3,10 @@ Components-Config
 
 {PHP} General use configuration classes
 
-**Requires:**
+###Requirements
  * `Wells\Util`
 
-###Usage
+##Basic Usage
 
 First, set up the config with the dependency injection container:
 
