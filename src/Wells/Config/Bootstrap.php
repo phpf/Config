@@ -7,10 +7,7 @@
 * Returns instance of Config_Object
 */
 function config(){
-	static $config;
-	if ( ! isset($config) )
-		$config = new Wells\Config\Object;
-	return $config;
+	return Wells\Util\Dependency\Container::i()->singleton('config');
 }
 
 function config_set( $var, $val ){

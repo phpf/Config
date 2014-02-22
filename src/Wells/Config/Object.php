@@ -23,6 +23,9 @@ class Object {
 		$this->data = $data;
 	}
 	
+	/**
+	 * Sets a config item value.
+	 */
 	public function set( $var, $val ){
 		
 		if ( $this->isReadOnly() )
@@ -37,6 +40,9 @@ class Object {
 		return $this;
 	}
 	
+	/**
+	 * Returns a config item value.
+	 */
 	public function get( $var ){
 		
 		if ( false === strpos($var, '.') ){
@@ -46,29 +52,47 @@ class Object {
 		return array_get($this->data, $var);
 	}
 	
+	/**
+	 * Whether a config item exists.
+	 */
 	public function exists( $var ){
 		$val = $this->get($var);
 		return !empty($val);
 	}
 
+	/**
+	 * Set whether the config items are read-only.
+	 */
 	public function setReadOnly( $val ){
 		$this->readOnly = (bool) $val;	
 		return $this;
 	}
 	
+	/**
+	 * Set whether the config items can have defaults.
+	 */
 	public function setHasDefaults( $val ){
 		$this->hasDefaults = (bool) $val;
 		return $this;
 	}
 	
+	/**
+	 * Whether the config items are read-only.
+	 */
 	public function isReadOnly(){
 		return $this->readOnly;	
 	}
 	
+	/**
+	 * Whether the config items can have defaults.
+	 */
 	public function hasDefaults(){
 		return $this->hasDefaults;	
 	}
 	
+	/**
+	 * Set an item's default value.
+	 */
 	public function setDefault( $var, $val ){
 			
 		if ( ! $this->hasDefaults() ){
@@ -80,6 +104,9 @@ class Object {
 		return $this;
 	}
 	
+	/**
+	 * Get an item's default value.
+	 */
 	public function getDefault( $var ){
 		
 		if ( ! $this->hasDefaults() ){
