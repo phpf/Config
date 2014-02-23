@@ -1,0 +1,24 @@
+{
+	"name": "phpf/config",
+	"type": "library",
+	"description": "Phpf Configuration package",
+	"keywords": ["Configuration", "Config", "ini"],
+	"homepage": "https://github.com/phpf/Config",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "The PHPf Developer",
+			"email": "wellspeterson@live.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3",
+		"phpf/util": "dev-master"
+	},
+	"autoload": {
+		"psr-0": {
+			"Phpf\\Config\\": "src/"
+		}
+	},
+	"minimum-stability": "dev"
+}
