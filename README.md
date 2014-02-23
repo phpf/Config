@@ -8,25 +8,18 @@ Components-Config
 
 ##Basic Usage
 
-First, set up the config with the dependency injection container:
+Use dot-notation to set and get settings in nested arrays.
+
 ```php
-$di->setSingleton('config', function (){
-  return new Wells\Config\Object;
-});
+$config = new Wells\Config\Object;
+$config->set('use.template.views', true);
 ```
 
-Then use like so:
+The above will be stored like:
 ```php
-$config = $di->singleton('config');
-
-$config->set('dot.notation.rocks', true);
-```
-
-The above will be stored in a nested array:
-```php
-"dot" => array(
-  "notation" => array(
-    "rocks" => true
-  ),
+"use" => array(
+    "template" => array(
+        "view" => true
+    ),
 );
 ```
