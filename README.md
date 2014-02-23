@@ -1,7 +1,7 @@
 Components-Config
 =================
 
-{PHP} General use configuration classes
+General use configuration classes
 
 ###Requirements
  * `Wells\Util`
@@ -19,7 +19,7 @@ The above will be stored like:
 ```php
 "use" => array(
     "template" => array(
-        "view" => true
+        "views" => true
     ),
 );
 ```
