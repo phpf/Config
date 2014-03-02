@@ -6,6 +6,8 @@
 
 namespace Phpf\Config;
 
+use Phpf\Util\Arr;
+
 /**
  * A basic Config object.
  */ 
@@ -35,7 +37,7 @@ class Object {
 			return $this->data[ $var ] = $val;
 		}
 		
-		array_set($this->data, $var, $val);	
+		Arr::dotSet($this->data, $var, $val);	
 		
 		return $this;
 	}
@@ -49,7 +51,7 @@ class Object {
 			return isset($this->data[ $var ]) ? $this->data[ $var ] : $this->getDefault($var);
 		}
 		
-		return array_get($this->data, $var);
+		return Arr::dotGet($this->data, $var);
 	}
 	
 	/**
