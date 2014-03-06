@@ -15,9 +15,9 @@ class Object {
 	
 	protected $data;
 	
-	protected $readOnly = false;
+	protected $read_only = false;
 	
-	protected $hasDefaults = false;
+	protected $has_defaults = false;
 	
 	protected $defaults = array();
 	
@@ -34,10 +34,10 @@ class Object {
 			return false;
 		
 		if ( false === strpos($var, '.') ){
-			return $this->data[ $var ] = $val;
+			$this->data[ $var ] = $val;
+		} else {
+			Arr::dotSet($this->data, $var, $val);	
 		}
-		
-		Arr::dotSet($this->data, $var, $val);	
 		
 		return $this;
 	}
@@ -63,10 +63,21 @@ class Object {
 	}
 
 	/**
+	 * Sets a config item value and returns it.
+	 * 
+	 * Useful for situations where you want to simulataneously set a config
+	 * property and another variable/object property/etc.
+	 */
+	public function setr( $var, $val ){
+		$this->set($var, $val);
+		return $val;
+	}
+	
+	/**
 	 * Set whether the config items are read-only.
 	 */
 	public function setReadOnly( $val ){
-		$this->readOnly = (bool) $val;	
+		$this->read_only = (bool) $val;	
 		return $this;
 	}
 	
@@ -74,7 +85,7 @@ class Object {
 	 * Set whether the config items can have defaults.
 	 */
 	public function setHasDefaults( $val ){
-		$this->hasDefaults = (bool) $val;
+		$this->has_defaults = (bool) $val;
 		return $this;
 	}
 	
@@ -82,14 +93,14 @@ class Object {
 	 * Whether the config items are read-only.
 	 */
 	public function isReadOnly(){
-		return $this->readOnly;	
+		return $this->read_only;	
 	}
 	
 	/**
 	 * Whether the config items can have defaults.
 	 */
 	public function hasDefaults(){
-		return $this->hasDefaults;	
+		return $this->has_defaults;	
 	}
 	
 	/**
