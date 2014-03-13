@@ -6,12 +6,14 @@
 
 namespace Phpf\Config;
 
+use ArrayAccess;
+use Countable;
 use Phpf\Util\Arr;
 
 /**
  * A basic Config object.
  */ 
-class Object {
+class Object implements ArrayAccess, Countable {
 	
 	protected $data;
 	
@@ -25,13 +27,34 @@ class Object {
 		$this->data = $data;
 	}
 	
+	public function offsetGet($index){
+		return $this->get($index);
+	}
+	
+	public function offsetSet($index, $newval){
+		$this->set($index, $newval);
+	}
+	
+	public function offsetExists($index){
+		return $this->exists($index);
+	}
+	
+	public function offsetUnset($index){
+		$this->remove($index);
+	}
+	
+	public function count(){
+		return count($this->data);
+	}
+	
 	/**
 	 * Sets a config item value.
 	 */
 	public function set( $var, $val ){
 		
-		if ( $this->isReadOnly() )
-			return false;
+		if ( $this->isReadOnly() ){
+			throw new \RuntimeException("Cannot set $var - config object is read-only.");
+		}
 		
 		if ( false === strpos($var, '.') ){
 			$this->data[ $var ] = $val;
@@ -60,6 +83,14 @@ class Object {
 	public function exists( $var ){
 		$val = $this->get($var);
 		return !empty($val);
+	}
+	
+	/**
+	 * Removes a config item.
+	 */
+	public function remove( $var ){
+		Arr::dotUnset($this->data, $var);
+		return $this;
 	}
 
 	/**
